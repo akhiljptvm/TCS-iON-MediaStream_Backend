@@ -18,7 +18,7 @@ app.get('/review/:id', async (req, res) => {
     console.log("inside")
     try{
     const id = req.params.id;
-    await uploadData.findOne({ "_id": id })
+    await reviewData.findOne({ "_id": id })
    
         .then((viduploads) => {
             console.log(viduploads._id);
@@ -30,21 +30,16 @@ app.get('/review/:id', async (req, res) => {
 })
 
 //Add review data ||to admin
-app.post('/add', cpUpload , async function (req, res) {
+app.post('/add', async function (req, res) {
     var videoUpload = {
-
-        videoTitle: req.body.videoTitle,
-        video: req.files?.video[0].path,
-        thumbnail: req.files?.thumbnail[0].path,
-        description: req.body.description,
-        tags: req.body.tags,
-        genre: req.body.genre,
-        releaseYear: req.body.releaseYear,
-        subtitle: req.files?.subtitle[0].path,
-        quality: req.body.quality
-        
+        caption: req.body.caption,
+        name: req.body.name,
+        review: req.body.review,
+        rating: req.body.rating,
+        creation_date: new Date()
+          
     }
-    var vidUpload = new uploadData(videoUpload);
+    var vidUpload = new reviewData(videoUpload);
     await vidUpload.save().then(function (data) {
         res.send(data);
     }).catch(function (error) {
@@ -58,7 +53,7 @@ app.post('/review/remove',async (req, res) => {
     console.log(req.body);
     id = req.body._id
     console.log(` inside deleted ${id}`);
-    uploadData.findByIdAndDelete({ '_id': id },
+    reviewData.findByIdAndDelete({ '_id': id },
     (err, result) => {
         if (err) {
             res.send(false)
@@ -69,24 +64,20 @@ app.post('/review/remove',async (req, res) => {
 });
 
 //Update/edit review data
-app.post('/review/update', cpUpload , (req, res) => {
+app.post('/review/update', (req, res) => {
 
     var videoUpload = {
-        videoTitle: req.body.videoTitle,
-        video: req.files?.video[0].path,
-        thumbnail: req.files?.thumbnail[0].path,
-        description: req.body.description,
-        tags: req.body.tags,
-        genre: req.body.genre,
-        releaseYear: req.body.releaseYear,
-        subtitle: req.files?.subtitle[0].path,
-        quality: req.body.quality
+        caption: req.body.caption,
+        name: req.body.name,
+        review: req.body.review,
+        rating: req.body.rating,
+        creation_date: new Date()
     }
 
     let _id = req.body._id;
     let updated = { $set: videoUpload };
 
-    uploadData.findByIdAndUpdate({ _id: _id }, updated)
+    reviewData.findByIdAndUpdate({ _id: _id }, updated)
         .then((respond) => {
             if (respond) {
                 console.log('Successfully Updated and saved to DB')

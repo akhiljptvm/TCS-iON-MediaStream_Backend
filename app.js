@@ -27,7 +27,15 @@ app.get('/', function (req, res) {
 
 // Route for Video upload
 const VideoUpload = require('./src/routes/upload');
-app.use('/upload',VideoUpload)
+app.use('/upload', VideoUpload)
+
+//Review Routes
+const Review = require('./src/routes/review');
+app.use('/review',Review)
+
+//Login Routes
+const Login = require('./src/routes/signin');
+app.use('/user',Login)
 
 
 // port listening to starts here//

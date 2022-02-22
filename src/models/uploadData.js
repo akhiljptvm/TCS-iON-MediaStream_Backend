@@ -10,7 +10,8 @@ const uploadSchema = new Schema({
     
     videoTitle: String,
     video: String,
-    thumbnail: String,
+  thumbnail: String,
+  category: String,
     description: String,
     tags: String,
   genre: String,
