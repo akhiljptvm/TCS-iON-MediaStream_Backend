@@ -11,6 +11,7 @@ const reviewSchema = new Schema({
     caption: String,
     name: String,
     review: String,
+    rating: String,
     creation_date:Date
 });
 

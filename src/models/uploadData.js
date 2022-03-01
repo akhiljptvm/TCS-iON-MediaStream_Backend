@@ -10,14 +10,19 @@ const uploadSchema = new Schema({
     
     videoTitle: String,
     video: String,
-    thumbnail: String,
+  thumbnail: String,
+  category: String,
     description: String,
     tags: String,
   genre: String,
   releaseYear: String,
   subtitle: String,
   quality: String,
-  genre:String,
+  genre: String,
+  
+  name: String,
+    review: String,
+    rating: String,
   creation_date: Date
 });
 

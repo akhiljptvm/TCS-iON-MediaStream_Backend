@@ -76,11 +76,12 @@ app.post('/add', cpUpload, async function (req, res) {
         video: req.files.video[0].path,
         thumbnail: req.files.thumbnail[0].path,
         description: req.body.description,
-        tags: req.body.tags,
+        // category: req.body.category,
+        // tags: req.body.tags,
         genre: req.body.genre,
         releaseYear: req.body.releaseYear,
-        // subtitle: req.files.subtitle[0].path,
-        quality: req.body.quality
+        subtitle: req.files.subtitle[0].path,
+        quality: req.body.quality,
         
     }
     var vidUpload = new uploadData(videoUpload);
@@ -114,12 +115,14 @@ app.post('/vidupload/update', cpUpload , (req, res) => {
         videoTitle: req.body.videoTitle,
         video: req.files?.video[0].path,
         thumbnail: req.files?.thumbnail[0].path,
+        category: req.body.category,
         description: req.body.description,
         tags: req.body.tags,
         genre: req.body.genre,
         releaseYear: req.body.releaseYear,
         subtitle: req.files?.subtitle[0].path,
         quality: req.body.quality
+
     }
 
     let _id = req.body._id;
