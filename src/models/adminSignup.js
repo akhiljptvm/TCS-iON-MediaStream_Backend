@@ -9,11 +9,12 @@ const Schema = mongoose.Schema;
 
 const adminSchema = new Schema({
     
-    name: String,
-    email: String,
-    password: String,
-    repeatpassword: String,
-    creation_date:Date
+  username:String,
+  email: String,
+  password: String,
+  repeatPass:String,
+  Rights: String,
+  creation_date:Date
 });
 //  fire a function before doc saved to db
 adminSchema.pre('save', async function (next) {

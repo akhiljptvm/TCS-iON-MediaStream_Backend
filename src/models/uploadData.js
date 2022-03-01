@@ -18,7 +18,11 @@ const uploadSchema = new Schema({
   releaseYear: String,
   subtitle: String,
   quality: String,
-  genre:String,
+  genre: String,
+  
+  name: String,
+    review: String,
+    rating: String,
   creation_date: Date
 });
 

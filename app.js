@@ -37,6 +37,9 @@ app.use('/review',Review)
 const Login = require('./src/routes/signin');
 app.use('/user',Login)
 
+//Admin Login Routes
+const AdminLogin = require('./src/routes/adminSignup');
+app.use('/admin',AdminLogin)
 
 // port listening to starts here//
 app.listen(port, () => {
